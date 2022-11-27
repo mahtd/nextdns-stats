@@ -2,10 +2,15 @@
   "name": "nextdns-stats",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Matt Drake <matt@mattdrake.me>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "node-fetch": "^3.2.10"
+  }
 }
