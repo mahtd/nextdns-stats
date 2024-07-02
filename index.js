@@ -49,7 +49,7 @@ async function fetchProfiles() {
 async function fetchLogs(profile, status) {
   let data = [];
   let done = false;
-  /** @type {string | null} */
+  /** @type {string | null | undefined} */
   let cursor = "";
 
   try {
@@ -62,14 +62,14 @@ async function fetchLogs(profile, status) {
         params.set("cursor", cursor);
       }
 
-      /** @type {{ data?: [Object], meta: { pagination: { cursor: string | null } } }} */
+      /** @type {{ data?: [Object], meta?: { pagination: { cursor: string | null } } }} */
       const json = await apiFetch(`/profiles/${profile}/logs?${params}`);
 
       if (Array.isArray(json.data)) {
         data = data.concat(json.data);
       }
 
-      cursor = json.meta.pagination.cursor;
+      cursor = json.meta?.pagination.cursor;
 
       if (!cursor) {
         done = true;
